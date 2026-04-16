@@ -37,10 +37,9 @@ public final class Novel
 
     /*
      * Validates the title of the novel.
-     * Ensures the title is not null or blank.
      *
      * @param title the title to validate
-     * @throws IllegalArgumentException if the title is null or blank
+     * @throws IllegalArgumentException if the title is not valid
      */
     private static void validateTitle(final String title)
     {
@@ -53,10 +52,9 @@ public final class Novel
 
     /*
      * Validates the author's name.
-     * Ensures the author name is not null or blank.
      *
      * @param authorName the author name to validate
-     * @throws IllegalArgumentException if the author name is null or blank
+     * @throws IllegalArgumentException if the author name is not valid
      */
     private static void validateAuthorName(final String authorName)
     {
@@ -69,10 +67,9 @@ public final class Novel
 
     /*
      * Validates the year the novel was published.
-     * Ensures the year is greater than the minimum allowed value.
      *
      * @param yearPublished the year to validate
-     * @throws IllegalArgumentException if the year is less than or equal to MIN_YEAR
+     * @throws IllegalArgumentException if the year is not valid
      */
     private static void validateYearPublished(final int yearPublished)
     {

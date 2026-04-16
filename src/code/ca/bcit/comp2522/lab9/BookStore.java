@@ -135,10 +135,9 @@ public final class BookStore
 
     /*
      * Validates the bookstore name.
-     * Ensures the name is not null or blank.
      *
      * @param name the name of the bookstore to validate
-     * @throws IllegalArgumentException if the name is null or blank
+     * @throws IllegalArgumentException if the name is not valid
      */
     private static void validateName(final String name)
     {
@@ -214,7 +213,7 @@ public final class BookStore
     public boolean isThereABookWrittenIn(final int yearPublished)
     {
         return novels.stream()
-                .anyMatch((final Novel n) -> n.getYearPublished() == yearPublished);
+                       .anyMatch((final Novel n) -> n.getYearPublished() == yearPublished);
     }
 
     /**
@@ -225,23 +224,24 @@ public final class BookStore
     public long howManyBooksContain(final String word)
     {
         return novels.stream()
-                .filter((final Novel n) -> n.getTitle().toLowerCase().contains(word.toLowerCase()))
-                .count();
+                       .filter((final Novel n) -> n.getTitle().toLowerCase().contains(word.toLowerCase()))
+                       .count();
     }
 
     /**
      * Calculates the percentage of books written between two years.
      * @param first start year (inclusive)
-     * @param last end year (inclusive)
+     * @param last  end year (inclusive)
      * @return percentage as an int
      */
-    public int whichPercentWrittenBetween(final int first, final int last)
+    public int whichPercentWrittenBetween(final int first,
+                                          final int last)
     {
         final long count;
         count = novels.stream()
-                .filter((final Novel n) -> n.getYearPublished() >= first && 
+                        .filter((final Novel n) -> n.getYearPublished() >= first && 
                                            n.getYearPublished() <= last)
-                .count();
+                        .count();
         return (int) ((double) count / novels.size() * PERCENT_CONVERSION);
     }
 
@@ -252,8 +252,8 @@ public final class BookStore
     public Novel getOldestBook()
     {
         return novels.stream()
-                .min(Comparator.comparingInt(Novel::getYearPublished))
-                .orElse(null);
+                       .min(Comparator.comparingInt(Novel::getYearPublished))
+                       .orElse(null);
     }
 
     /**
@@ -264,8 +264,8 @@ public final class BookStore
     public List<Novel> getBooksThisLength(final int titleLength)
     {
         return novels.stream()
-                .filter((final Novel n) -> n.getTitle().length() == titleLength)
-                .toList();
+                       .filter((final Novel n) -> n.getTitle().length() == titleLength)
+                       .toList();
     }
 
     /**
